@@ -235,6 +235,7 @@ SRC_FILES += \
   $(PROJ_DIR)/tensorflow/lite/micro/examples/hello_world/output_handler.cc \
   $(PROJ_DIR)/tensorflow/lite/micro/examples/hello_world/constants.cc\
   $(PROJ_DIR)/tensorflow/lite/micro/examples/hello_world/hello_world_model_data.cc\
+  $(PROJ_DIR)/tensorflow/lite/micro/examples/hello_world/model.cc\
 
 
 
