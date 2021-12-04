@@ -19,6 +19,7 @@ limitations under the License.
 #include "tensorflow/lite/micro/examples/hello_world/constants.h"
 // #include "tensorflow/lite/micro/examples/hello_world/hello_world_model_data.h"
 #include "tensorflow/lite/micro/examples/hello_world/model.h"
+#include "tensorflow/lite/micro/examples/hello_world/model_float.h"
 #include "tensorflow/lite/micro/examples/hello_world/output_handler.h"
 #include "tensorflow/lite/micro/micro_error_reporter.h"
 #include "tensorflow/lite/micro/micro_interpreter.h"
@@ -86,7 +87,7 @@ TfLiteTensor* input = nullptr;
 TfLiteTensor* output = nullptr;
 int inference_count = 0;
 
-constexpr int kTensorArenaSize = 11000;
+constexpr int kTensorArenaSize = 50000;
 uint8_t tensor_arena[kTensorArenaSize];
 }  // namespace
 
@@ -102,7 +103,8 @@ void setup() {
 
   // Map the model into a usable data structure. This doesn't involve any
   // copying or parsing, it's a very lightweight operation.
-  model = tflite::GetModel(quant_1dcnn_tflite);
+  // model = tflite::GetModel(quant_1dcnn_tflite);
+  model = tflite::GetModel(float_model);
   if (model->version() != TFLITE_SCHEMA_VERSION) {
     TF_LITE_REPORT_ERROR(error_reporter,
                          "Model provided is schema version %d not equal "
